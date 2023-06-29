@@ -47,3 +47,14 @@
 .temperature {
   font-size: 80px;
 }
+
+.list {
+  list-style: none;
+}
+
+.list-item {
+  background-color: gray;
+  padding: 10px;
+  border-radius: 10px;
+  align-self: center;
+}

@@ -9,7 +9,6 @@ function App() {
   const [weather, setWeather] = useState({});
 
   function handleAddActivity(activity) {
-    //console.log([...activities, { ...activity, id: uid() }]);
     setActivities([...activities, { ...activity, id: uid() }]);
   }
 
@@ -53,11 +52,11 @@ function List({ activities, weather, onDeleteActivity }) {
     (activity) => activity.goodWeather === weather
   );
   return (
-    <ul>
+    <ul className="list">
       {filteredActivities.map((activity) => {
         console.log("second log", activity);
         return (
-          <li key={activity.id}>
+          <li className="list-item" key={activity.id}>
             {activity.name}
             <button onClick={() => onDeleteActivity(activity.id)}>❌</button>
           </li>
