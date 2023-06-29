@@ -4,7 +4,6 @@ export default function Form({ onAddActivity }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     const goodWeather = event.target.elements.isForGoodWeather.checked;
-    console.log("log", { ...data, goodWeather });
     onAddActivity({ ...data, goodWeather });
     event.target.reset();
   }
@@ -13,7 +12,7 @@ export default function Form({ onAddActivity }) {
       <legend>Add new Activity</legend>
       <form onSubmit={handleSubmit} className="form">
         <label htmlFor="activity">
-          Activity: <input name="name" id="activity" type="text" />
+          Activity: <input required name="name" id="activity" type="text" />
         </label>
 
         <label htmlFor="weather">
