@@ -3,7 +3,8 @@ export default function Form({ onAddActivity }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onAddActivity(data);
+    const goodWeather = event.target.elements.isForGoodWeather.checked;
+    onAddActivity({ ...data, goodWeather });
     event.target.reset();
   }
   return (
