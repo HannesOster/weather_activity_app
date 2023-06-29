@@ -6,7 +6,7 @@ import { uid } from "uid";
 
 function App() {
   const [activities, setActivities] = useState([{ id: "abc", name: "test" }]);
-
+  const Weather = true;
   function handleAddActivity(activity) {
     console.log([...activities, { ...activity, id: uid() }]);
     setActivities([...activities, { ...activity, id: uid() }]);
@@ -18,9 +18,11 @@ function App() {
 
       <Form onAddActivity={handleAddActivity} />
       <ul>
-        {activities.map((activity) => {
-          return <li>{activity.name}</li>;
-        })}
+        {activities
+          .filter((activity) => activity.goodWeather === Weather)
+          .map((activity) => {
+            return <li>{activity.name}</li>;
+          })}
       </ul>
     </div>
   );
