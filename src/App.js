@@ -20,7 +20,7 @@ function App() {
 
         const data = await response.json();
         console.log(data);
-        setWeather(data.isGoodWeather);
+        setWeather(data);
       } catch (error) {
         console.log("caught error", error);
       }
@@ -31,19 +31,23 @@ function App() {
   return (
     <div className="App">
       <Header />
-
+      <p>
+        <span>{}</span>
+      </p>
+      <List items={activities} weather={weather.isGoodWeather} />
       <Form onAddActivity={handleAddActivity} />
-      <ul>
-        {activities
-          .filter((activity) => activity.goodWeather === weather)
-          .map((activity) => {
-            return <li>{activity.name}</li>;
-          })}
-      </ul>
     </div>
   );
 }
-function List() {
-  <ul>{}</ul>;
+function List({ items, weather }) {
+  return (
+    <ul>
+      {items
+        .filter((activity) => activity.goodWeather === weather)
+        .map((activity) => {
+          return <li>{activity.name}</li>;
+        })}
+    </ul>
+  );
 }
 export default App;
