@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header/index";
+import Form from "./components/Form/index";
+import { useState } from "react";
+import { uid } from "uid";
 
 function App() {
+  const [activities, setActivities] = useState([{ id: "abc", name: "test" }]);
+
+  function handleAddActivity(activity) {
+    console.log([...activities, { ...activity, id: uid() }]);
+    setActivities([...activities, { ...activity, id: uid() }]);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+
+      <Form onAddActivity={handleAddActivity} />
+      <ul>
+        {activities.map((activity) => {
+          return <li>{activity.name}</li>;
+        })}
+      </ul>
     </div>
   );
 }
-
+function List() {
+  <ul>{}</ul>;
+}
 export default App;
